@@ -1,7 +1,18 @@
-grunt-jsonlint [![Build Status](https://travis-ci.org/brandonramirez/grunt-jsonlint.svg)](https://travis-ci.org/brandonramirez/grunt-jsonlint)
+grunt-jsonlint
+[![NPM version](https://badge.fury.io/js/%40prantlf%2Fgrunt-jsonlint.svg)](https://badge.fury.io/js/%40prantlf%2Fgrunt-jsonlint)
+[![Build Status](https://travis-ci.com/prantlf/grunt-jsonlint.svg?branch=master)](https://travis-ci.com/prantlf/grunt-jsonlint)
+[![Dependency Status](https://david-dm.org/prantlf/grunt-jsonlint.svg)](https://david-dm.org/prantlf/grunt-jsonlint)
+[![devDependency Status](https://david-dm.org/prantlf/grunt-jsonlint/dev-status.svg)](https://david-dm.org/prantlf/grunt-jsonlint#info=devDependencies)
 ==============
 
 Validate JSON files from grunt.
+
+This is a fork of the original package with the following enhancements:
+
+* Supports JSON Schema drafts 04, 06 and 07.
+* Can parse and skip JavaScript-style comments.
+* Can accept single quotes (apostrophes) as string delimiters.
+* Depends on up-to-date npm modules with no installation warnings.
 
 Requires grunt 1.0+ and node 4.0+.
 
@@ -174,3 +185,10 @@ Which does the same thing.
 * 2015-12-23   v1.0.7	Include file name and JSON source line number in error messages
 * 2016-05-27   v1.0.8	Option to format JSON file thanks to @robblue2x
 * 2016-06-11   v1.1.0	Enhanced error reporting for better human reading and Visual Studio integration.
+* 2019-05-27   v1.2.0	Support comments, single-quoted strings and JSON Schema validation
+
+# License
+
+Copyright (C) 2013-2019 Brandon Ramirez, Ferdinand Prantl
+
+Licensed under the MIT license.
