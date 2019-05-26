@@ -18,7 +18,7 @@ Requires grunt 1.0+ and node 4.0+.
 
 # Install
 
-    npm install grunt-jsonlint --save-dev
+    npm install @prantlf/grunt-jsonlint --save-dev
 
 # Configure
 
@@ -35,7 +35,7 @@ Add the following (multi-)task to your Gruntfile:
 
 Add the following to load the task into your Gruntfile:
 
-    grunt.loadNpmTasks('grunt-jsonlint');
+    grunt.loadNpmTasks('@prantlf/grunt-jsonlint');
 
 An error will be thrown if the JSON file contains syntax errors.  To prefer an error format compatible with Visual Studio, change the formatter to 'msbuild'.
 
