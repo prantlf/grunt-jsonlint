@@ -53,6 +53,14 @@ module.exports = function(grunt) {
           allowSingleQuotedStrings: true
         }
       },
+      schema: {
+        src: [ 'test/3.json' ],
+        options: {
+          schema: {
+            src: 'test/3.schema.json'
+          }
+        }
+      },
       overflowTest: {
         src: [ 'test/issue13/**/*.json' ]
       },
@@ -93,7 +101,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments',
-    'jsonlint:singleQuotes', 'mochaTest'
+    'jsonlint:singleQuotes', 'jsonlint:schema', 'mochaTest'
   ]);
 
   // Default task(s).
