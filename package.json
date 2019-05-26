@@ -1,32 +1,49 @@
 {
-  "name": "grunt-jsonlint",
+  "name": "@prantlf/grunt-jsonlint",
   "version": "1.1.0",
   "description": "Validate JSON files from grunt.",
-  "main": "tasks/jsonlint.js",
-  "scripts": {
-    "test": "grunt test"
-  },
-  "engines": {
-    "node": ">=4.0"
-  },
-  "repository": "https://github.com/brandonramirez/grunt-jsonlint",
-  "bugs": "https://github.com/brandonramirez/grunt-jsonlint/issues",
-  "keywords": [
-    "gruntplugin",
-    "build",
-    "validate"
-  ],
-  "author": "Brandon Ramirez <brandon.s.ramirez@gmail.com> (http://www.brandonsramirez.com/)",
+  "author": "Ferdinand Prantl <prantlf@gmail.com> (http://prantl.tk)",
   "contributors": [
+    "Brandon Ramirez <brandon.s.ramirez@gmail.com> (http://www.brandonsramirez.com/)",
     "Fred Ghosn (https://github.com/fredghosn)"
   ],
   "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/prantlf/grunt-jsonlint/blob/master/LICENSE-MIT"
+    }
+  ],
+  "homepage": "http://github.com/prantlf/grunt-jsonlint/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prantlf/grunt-jsonlint.git"
+  },
+  "bugs": {
+    "url": "http://github.com/prantlf/grunt-jsonlint/issues"
+  },
+  "main": "tasks/jsonlint.js",
+  "engines": {
+    "node": ">=4.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "keywords": [
+    "gruntplugin",
+    "build",
+    "validate",
+    "validation",
+    "json",
+    "lint",
+    "jsonlint"
+  ],
   "dependencies": {
     "@prantlf/jsonlint": "6.0.0",
     "strip-json-comments": "^3.0.1"
   },
   "devDependencies": {
-    "async": "^3.0.0",
+    "async": "^3.0.1",
     "expect.js": "^0.3.1",
     "fs-writefile-promise": "^3.0.2",
     "grunt": "~1.0.4",
