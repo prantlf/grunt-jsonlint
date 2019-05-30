@@ -36,7 +36,11 @@ module.exports = function(grunt) {
 
     jsonlint: {
       sample: {
-        src: [ 'test/valid.json' ]
+        src: [ 'test/valid.json' ],
+        options: {
+          formatter: 'msbuild',
+          reporter: 'jshint'
+        }
       },
       packageJson: {
         src: [ 'package.json' ]

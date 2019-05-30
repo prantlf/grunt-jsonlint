@@ -13,6 +13,8 @@ This is a fork of the original package with the following enhancements:
 * Supports JSON Schema drafts 04, 06 and 07.
 * Can parse and skip JavaScript-style comments.
 * Can accept single quotes (apostrophes) as string delimiters.
+* Can sort object keys alphabetically.
+* Prefers using the 35x faster native JSON parser, if possible.
 * Depends on up-to-date npm modules with no installation warnings.
 
 Requires grunt 1.0+ and node 4.0+.
@@ -148,8 +150,8 @@ To customize this, change the `reporter` option to `jshint` (the format is inspi
 
 The output will look like:
 
-     9 |     "3"
-             ^ Expected 'EOF', '}', ':', ',', ']' and instead saw '3'
+     9 |  "3"
+          ^ Expected 'EOF', '}', ':', ',', ']' and instead saw '3'
 
 The default reporter is called `exception` since it simply relays the raw exception.
 
@@ -182,6 +184,7 @@ Which does the same thing.
 * 2016-06-11   v1.1.0	Enhanced error reporting for better human reading and Visual Studio integration.
 * 2019-05-27   v1.2.0	Support comments, single-quoted strings and JSON Schema validation
 * 2019-05-30   v1.3.0	Support object keys sorting in the formatted output
+* 2019-05-30   v1.3.1	Prefer faster native JSON parser, fix error reporting
 
 # License
 

@@ -42,7 +42,7 @@ describe('grunt-jsonlint task', function () {
 
   it('fails an invalid JSON file', function () {
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
-    expectFailure(grunt, 9);
+    expectFailure(grunt, 10);
   });
 
   it('passes a valid CJSON file', function () {
@@ -92,7 +92,7 @@ describe('grunt-jsonlint task', function () {
     var e = grunt.log.writeln.args[0][0];
 
     expect(e).to.be.an(Error);
-    expect(e.message).to.contain('Invalid JSON');
+    expect(e.message).to.contain('Parse error');
   });
 
   it('includes jshint-style details of failure', function () {
@@ -150,7 +150,8 @@ function createPassingJsonlintSpy() {
 function createFailingJsonlintSpy() {
   var x = {
     parse: function (data) {
-      var hash = {
+      var error = new Error('Parse error on line 3:\n{ 3...\n--^\nExpected "{" and instead saw "3"');
+      error.hash = {
         "text": "\"3\"",
         "token": "STRING",
         "line": 3,
@@ -164,8 +165,7 @@ function createFailingJsonlintSpy() {
           "']'"
         ]
       };
-      this.yy.parseError('Invalid JSON', hash);
-      throw new Error('Invalid JSON');
+      throw error;
     },
     parser: {
       yy: {
