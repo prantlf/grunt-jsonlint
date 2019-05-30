@@ -1,7 +1,8 @@
-module.exports = function(grunt) {
+var oldNode = process.version.startsWith('v4.');
 
+module.exports = function(grunt) {
   // Project configuration.
-  grunt.initConfig({
+  var config = {
     pkg: grunt.file.readJSON('package.json'),
 
     jshint: {
@@ -83,9 +84,11 @@ module.exports = function(grunt) {
           reporter: 'jshint'
         }
       }
-    },
+    }
+  };
 
-    mochaTest: {
+  if (!oldNode) {
+    config.mochaTest = {
       options: {
         reporter: 'spec'
       },
@@ -95,20 +98,27 @@ module.exports = function(grunt) {
       issue13Tests: {
         src: [ 'test/issue13-tests.js' ]
       }
-    }
-  });
+    };
+  }
+
+  grunt.initConfig(config);
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-mocha-test');
+  if (!oldNode) {
+    grunt.loadNpmTasks('grunt-mocha-test');
+  }
 
   require('./tasks/jsonlint')(grunt);
 
-  grunt.registerTask('test', [
+  var tests = [
     'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments',
-    'jsonlint:singleQuotes', 'jsonlint:schema', 'mochaTest'
-  ]);
+    'jsonlint:singleQuotes', 'jsonlint:schema'
+  ];
+  if (!oldNode) {
+    tests.push('mochaTest');
+  }
+  grunt.registerTask('test', tests);
 
   // Default task(s).
   grunt.registerTask('default', [ 'test' ]);
-
 };
