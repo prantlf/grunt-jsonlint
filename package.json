@@ -39,7 +39,7 @@
     "jsonlint"
   ],
   "dependencies": {
-    "@prantlf/jsonlint": "6.0.0",
+    "@prantlf/jsonlint": "6.2.1",
     "strip-json-comments": "^3.0.1"
   },
   "devDependencies": {
