@@ -1,6 +1,7 @@
 grunt-jsonlint
 [![NPM version](https://badge.fury.io/js/%40prantlf%2Fgrunt-jsonlint.svg)](https://badge.fury.io/js/%40prantlf%2Fgrunt-jsonlint)
 [![Build Status](https://travis-ci.com/prantlf/grunt-jsonlint.svg?branch=master)](https://travis-ci.com/prantlf/grunt-jsonlint)
+[![Coverage Status](https://coveralls.io/repos/github/prantlf/grunt-jsonlint/badge.svg?branch=master)](https://coveralls.io/github/prantlf/grunt-jsonlint?branch=master)
 [![Dependency Status](https://david-dm.org/prantlf/grunt-jsonlint.svg)](https://david-dm.org/prantlf/grunt-jsonlint)
 [![devDependency Status](https://david-dm.org/prantlf/grunt-jsonlint/dev-status.svg)](https://david-dm.org/prantlf/grunt-jsonlint#info=devDependencies)
 ==============
@@ -152,14 +153,6 @@ The output will look like:
 
 The default reporter is called `exception` since it simply relays the raw exception.
 
-# Roadmap
-
-The underlying jsonlint library has many features not yet exposed.
-Each of these would be valuable in grunt.
-
-* Schema validation
-* Sort file by key
-
 # Running tests
 
 Unit tests are provided for automated regression testing.  The easiest way
@@ -188,6 +181,7 @@ Which does the same thing.
 * 2016-05-27   v1.0.8	Option to format JSON file thanks to @robblue2x
 * 2016-06-11   v1.1.0	Enhanced error reporting for better human reading and Visual Studio integration.
 * 2019-05-27   v1.2.0	Support comments, single-quoted strings and JSON Schema validation
+* 2019-05-30   v1.3.0	Support object keys sorting in the formatted output
 
 # License
 

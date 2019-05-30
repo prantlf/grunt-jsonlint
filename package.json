@@ -27,7 +27,8 @@
     "node": ">=4.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "nyc grunt test",
+    "coverage": "cat coverage/lcov.info | npx coveralls"
   },
   "keywords": [
     "gruntplugin",
@@ -40,20 +41,21 @@
   ],
   "dependencies": {
     "@prantlf/jsonlint": "6.2.1",
-    "strip-json-comments": "^3.0.1"
+    "strip-json-comments": "3.0.1"
   },
   "devDependencies": {
-    "async": "^3.0.1",
-    "expect.js": "^0.3.1",
-    "fs-writefile-promise": "^3.0.2",
-    "grunt": "~1.0.4",
-    "grunt-contrib-jshint": "~2.1.0",
-    "grunt-mocha-test": "^0.13.3",
-    "lodash": "^4.17.11",
-    "mkdirp-promise": "^5.0.1",
-    "mocha": "^6.1.4",
-    "promise": "^8.0.3",
-    "sinon": "^7.3.2",
-    "sinon-expect": "^0.3.0"
+    "async": "3.0.1",
+    "expect.js": "0.3.1",
+    "fs-writefile-promise": "3.0.2",
+    "grunt": "1.0.4",
+    "grunt-contrib-jshint": "2.1.0",
+    "grunt-mocha-test": "0.13.3",
+    "lodash": "4.17.11",
+    "mkdirp-promise": "5.0.1",
+    "mocha": "6.1.4",
+    "nyc": "14.1.1",
+    "promise": "8.0.3",
+    "sinon": "7.3.2",
+    "sinon-expect": "0.3.0"
   }
 }
