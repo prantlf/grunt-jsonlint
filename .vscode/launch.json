@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "test",
+      "program": "${workspaceRoot}/node_modules/grunt/bin/grunt",
+      "args": [
+        "mochaTest:unitTests"
+      ],
+      "skipFiles": [
+        "<node_internals>/**/*.js"
+      ]
+    }
+  ]
+}
