@@ -1,10 +1,13 @@
 .nyc_output/
+.coveralls.yml
+.editorconfig
+.gitignore
+.npmignore
+.nycrc.yml
+.travis.yml
+.vscode/
 coverage/
 node_modules/
 npm-debug.log
-*.gz
-*.tgz
 test/
-.travis.yml
 Gruntfile.js
-test/issue13/
