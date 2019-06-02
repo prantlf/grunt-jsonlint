@@ -1,29 +1,29 @@
-grunt-jsonlint
+# grunt-jsonlint
 [![NPM version](https://badge.fury.io/js/%40prantlf%2Fgrunt-jsonlint.svg)](https://badge.fury.io/js/%40prantlf%2Fgrunt-jsonlint)
 [![Build Status](https://travis-ci.com/prantlf/grunt-jsonlint.svg?branch=master)](https://travis-ci.com/prantlf/grunt-jsonlint)
 [![Coverage Status](https://coveralls.io/repos/github/prantlf/grunt-jsonlint/badge.svg?branch=master)](https://coveralls.io/github/prantlf/grunt-jsonlint?branch=master)
 [![Dependency Status](https://david-dm.org/prantlf/grunt-jsonlint.svg)](https://david-dm.org/prantlf/grunt-jsonlint)
 [![devDependency Status](https://david-dm.org/prantlf/grunt-jsonlint/dev-status.svg)](https://david-dm.org/prantlf/grunt-jsonlint#info=devDependencies)
-==============
 
-Validate [JSON]/[JSON5] files from `grunt`.
+Validates [JSON]/[JSON5] files from `grunt`.
 
 This is a fork of the original package with the following enhancements:
 
 * Supports [JSON Schema] drafts 04, 06 and 07.
-* Can parse and skip JavaScript-style comments.
-* Can accept single quotes (apostrophes) as string delimiters.
+* Optionally recognizes JavaScript-style comments and single quoted strings.
+* Optionally ignores trailing commas and reports duplicate object keys as an error.
+* Supports [JSON Schema] drafts 04, 06 and 07.
 * Can sort object keys alphabetically.
 * Prefers using the 8x faster native JSON parser, if possible.
 * Depends on up-to-date npm modules with no installation warnings.
 
 Requires grunt 1.0+ and node 4.0+.
 
-# Install
+## Installation
 
-    npm install @prantlf/grunt-jsonlint --save-dev
+    npm i @prantlf/grunt-jsonlint -D
 
-# Configure
+## Configuration
 
 Add the following (multi-)task to your Gruntfile:
 
@@ -42,7 +42,7 @@ Add the following to load the task into your Gruntfile:
 
 An error will be thrown if the JSON file contains syntax errors.  To prefer an error format compatible with Visual Studio, change the formatter to 'msbuild'.
 
-# Customizing
+## Customizing
 
 There is a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
 
@@ -50,16 +50,22 @@ There is a couple of options, which can support non-standard JSON syntax, usuall
       all: {
         src: [ 'some/settings.json' ],
         options: {
-          ignoreComments: true,
-          allowSingleQuotedStrings: true
+          mode: 'json',
+          ignoreComments: false,
+          ignoreTrailingCommas: false,
+          allowSingleQuotedStrings: false,
+          allowDuplicateObjectKeys: true,
         }
       }
     }
 
-* ignoreComments, when true JavaScript-style single-line and multiple-line comments will be recognised and ignored during parsing
-* allowSingleQuotedStrings, when true single quotes will be accepted as alternative delimiters for strings
+* `mode`, when set to "cjson" or "json5", enables some other flags automatically
+* `ignoreComments`, when `true` JavaScript-style single-line and multiple-line comments will be recognised and ignored
+* `ignoreTrailingCommas`, when `true` trailing commas in objects and arrays will be ignored
+* `allowSingleQuotedStrings`, when `true` single quotes will be accepted as alternative delimiters for strings
+* `allowDuplicateObjectKeys`, when `false` duplicate keys in objects will be reported as an error
 
-# Formatting
+## Formatting
 
 Add the following (multi-)task to your Gruntfile:
 
@@ -74,11 +80,11 @@ Add the following (multi-)task to your Gruntfile:
       }
     }
 
-* format, when true JSON.stringify will be used to format the JavaScript (if it is valid)
-* indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
-* sortKeys, when true keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
+* `format`, when `true` `JSON.stringify` will be used to format the JavaScript (if it is valid)
+* `indent`, the value passed to `JSON.stringify`, it can be the number of spaces, or string like "\t"
+* `sortKeys`, when `true` keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
 
-# Schema Validation
+## Schema Validation
 
 You can validate JSON files using JSON Schema drafts 04, 06 or 07:
 
@@ -94,14 +100,15 @@ You can validate JSON files using JSON Schema drafts 04, 06 or 07:
       }
     }
 
-* schema, when set to a file path, the file will be used as a source of the JSON Schema to validate the JSON files in addition to the syntax checks
-* environment, can specify the version of the JSON Schema draft to use for validation: "json-schema-draft-04", "json-schema-draft-06" or "json-schema-draft-07" (if not set, the schema draft version will be inferred automatically)
+* `schema`, when set the source file will be validated using ae JSON Schema in addition to the syntax checks
+* `src`, when filled with a file path, the file will be used as a source of the JSON Schema
+* `environment`, can specify the version of the JSON Schema draft to use for validation: "json-schema-draft-04", "json-schema-draft-06" or "json-schema-draft-07" (if not set, the schema draft version will be inferred automatically)
 
-# Reporting
+## Reporting
 
 There are a few options available for reporting errors:
 
-## Error message format
+### Error Message Format
 
 The standard error message format (`prose`) is optimized for human reading and looks like:
 
@@ -124,7 +131,7 @@ The output will look like:
 
     >> test/invalid.json(9): error: failed JSON validation
 
-## Error reporting
+### Error Reporting
 
 By default, the raw error from the underlying `jsonlint` library comes through to the grunt output.  It looks like:
 
@@ -153,22 +160,20 @@ The output will look like:
 
 The default reporter is called `exception` since it simply relays the raw exception.
 
-# Running tests
+## Running Tests
 
-Unit tests are provided for automated regression testing.  The easiest way
-to run them is with
+Unit tests are provided for automated regression testing. The easiest way
+to run them is with:
 
-    $ npm install
-    $ npm test
+    npm test
 
-Alternatively, if you have `grunt-cli` installed, you could use grunt directly with
+Alternatively, if you have `grunt-cli` installed, you could use grunt directly:
 
-    $ npm install
-    $ grunt test
+    grunt test
 
 Which does the same thing.
 
-# Release History
+## Release History
 
 * 2013-02-20   v1.0.0	First official release
 * 2015-10-29   v1.0.6	CJSON support thanks to @fredghosn, unit tests
@@ -179,7 +184,7 @@ Which does the same thing.
 * 2019-05-30   v1.3.1	Prefer faster native JSON parser, fix error reporting
 * 2019-06-02   v2.0.0	Upgrade to @prantlf/jsonlint using a hand-built parser instead of the Jison-generated one
 
-# License
+## License
 
 Copyright (C) 2013-2019 Brandon Ramirez, Ferdinand Prantl
 

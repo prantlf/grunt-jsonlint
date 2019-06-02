@@ -58,6 +58,12 @@ module.exports = function(grunt) {
           allowSingleQuotedStrings: true
         }
       },
+      json5: {
+        src: [ 'test/json5.json' ],
+        options: {
+          mode: 'json5'
+        }
+      },
       schema: {
         src: [ 'test/3.json' ],
         options: {
@@ -112,7 +118,7 @@ module.exports = function(grunt) {
 
   var tests = [
     'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments',
-    'jsonlint:singleQuotes', 'jsonlint:schema'
+    'jsonlint:singleQuotes', 'jsonlint:json5', 'jsonlint:schema'
   ];
   if (!oldNode) {
     tests.push('mochaTest');
