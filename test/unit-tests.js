@@ -140,40 +140,27 @@ describe('grunt-jsonlint task', function () {
 
 function createPassingJsonlintSpy() {
   return {
-    parse: sinon.spy(),
-    parser: {
-      yy: { }
-    }
+    parse: sinon.spy()
   };
 }
 
 function createFailingJsonlintSpy() {
   var x = {
     parse: function (data) {
-      var error = new Error('Parse error on line 3:\n{ 3...\n--^\nExpected "{" and instead saw "3"');
-      error.hash = {
-        "text": "\"3\"",
-        "token": "STRING",
-        "line": 3,
-        "loc": {
-          "first_line": 3,
-          "last_line": 3,
-          "first_column": 8,
-          "last_column": 11
-        },
-        "expected": [
-          "']'"
-        ]
+      var error = new SyntaxError('Parse error on line 1, column 3:\n{ 3...\n--^\nExpected "}" and instead saw "3"');
+      error.reason = 'Expected "}" and instead saw "3"';
+      error.exzerpt = '{ 3...';
+      error.pointer = '--^';
+      error.location = {
+        "start": {
+          "line": 3,
+          "column": 8,
+          "offset": 11
+        }
       };
       throw error;
-    },
-    parser: {
-      yy: {
-        parseError: function stub(msg, hash) { }
-      }
     }
   };
-  x.parse = x.parse.bind(x.parser);
   return x;
 }
 
