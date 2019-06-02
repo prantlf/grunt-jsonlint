@@ -12,7 +12,6 @@ This is a fork of the original package with the following enhancements:
 * Supports [JSON Schema] drafts 04, 06 and 07.
 * Optionally recognizes JavaScript-style comments and single quoted strings.
 * Optionally ignores trailing commas and reports duplicate object keys as an error.
-* Supports [JSON Schema] drafts 04, 06 and 07.
 * Can sort object keys alphabetically.
 * Prefers using the 8x faster native JSON parser, if possible.
 * Depends on up-to-date npm modules with no installation warnings.
@@ -82,7 +81,7 @@ Add the following (multi-)task to your Gruntfile:
 
 * `format`, when `true` `JSON.stringify` will be used to format the JavaScript (if it is valid)
 * `indent`, the value passed to `JSON.stringify`, it can be the number of spaces, or string like "\t"
-* `sortKeys`, when `true` keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
+* `sortKeys`, when `true` keys of objects in the output JSON will be sorted alphabetically (`format` has to be set to `true` too)
 
 ## Schema Validation
 
