@@ -1,11 +1,11 @@
-# grunt-jsonlint
+# @prantlf/grunt-jsonlint
 [![NPM version](https://badge.fury.io/js/%40prantlf%2Fgrunt-jsonlint.svg)](https://badge.fury.io/js/%40prantlf%2Fgrunt-jsonlint)
 [![Build Status](https://travis-ci.com/prantlf/grunt-jsonlint.svg?branch=master)](https://travis-ci.com/prantlf/grunt-jsonlint)
 [![Coverage Status](https://coveralls.io/repos/github/prantlf/grunt-jsonlint/badge.svg?branch=master)](https://coveralls.io/github/prantlf/grunt-jsonlint?branch=master)
 [![Dependency Status](https://david-dm.org/prantlf/grunt-jsonlint.svg)](https://david-dm.org/prantlf/grunt-jsonlint)
 [![devDependency Status](https://david-dm.org/prantlf/grunt-jsonlint/dev-status.svg)](https://david-dm.org/prantlf/grunt-jsonlint#info=devDependencies)
 
-Validates [JSON]/[JSON5] files from `grunt`.
+Validates [JSON]/[JSON5] files from [`grunt`] using [`jsonlint`].
 
 This is a fork of the original package with the following enhancements:
 
@@ -182,7 +182,7 @@ Which does the same thing.
 * 2019-05-27   v1.2.0	Support comments, single-quoted strings and JSON Schema validation
 * 2019-05-30   v1.3.0	Support object keys sorting in the formatted output
 * 2019-05-30   v1.3.1	Prefer faster native JSON parser, fix error reporting
-* 2019-06-02   v2.0.0	Upgrade to @prantlf/jsonlint using a hand-built parser instead of the Jison-generated one
+* 2019-06-02   v2.0.0	Upgrade to @prantlf/jsonlint using a hand-built parser instead of the Jison-generated one with additional options
 
 ## License
 
@@ -190,6 +190,8 @@ Copyright (C) 2013-2019 Brandon Ramirez, Ferdinand Prantl
 
 Licensed under the MIT license.
 
+[`grunt`]: https://gruntjs.com/
+[`jsonlint`]: https://prantlf.github.io/jsonlint/
 [JSON]: https://tools.ietf.org/html/rfc8259
 [JSON5]: https://spec.json5.org
 [JSON Schema]: https://json-schema.org
