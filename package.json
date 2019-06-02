@@ -41,7 +41,7 @@
     "jsonlint"
   ],
   "dependencies": {
-    "@prantlf/jsonlint": "7.0.0"
+    "@prantlf/jsonlint": "7.0.2"
   },
   "devDependencies": {
     "async": "3.0.1",
