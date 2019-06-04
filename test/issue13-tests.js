@@ -1,3 +1,6 @@
+/* globals describe, before, it */
+'use strict';
+
 var fs = require('fs');
 var grunt = require('grunt');
 
@@ -10,6 +13,26 @@ var expect = require('expect.js');
 var NUM_TEST_DIRECTORIES = 55;
 var NUM_TEST_FILES_PER_DIRECTORY = 5000;
 var PARALLEL_FILE_CREATION = 100;
+
+function createFiles(done) {
+  return function () {
+    var overall = [];
+
+    for (var i = 0; i < NUM_TEST_DIRECTORIES; i++) {
+      for (var j = 0; j < NUM_TEST_FILES_PER_DIRECTORY; j++) {
+        overall.push(__dirname + '/issue13/' + i + '/' + j + '.json');
+      }
+    }
+
+    //var startTime = new Date().getTime();
+    async.eachLimit(overall, PARALLEL_FILE_CREATION, function (file, fileDone) {
+      fs.writeFile(file, '{}', fileDone);
+    }, function directoriesComplete() {
+      //console.log('all files built in ' + (new Date().getTime() - startTime) + 'ms.');
+      done();
+    });
+  };
+}
 
 describe('system tests', function () {
 
@@ -56,26 +79,3 @@ describe('system tests', function () {
   });
 
 });
-
-function createFiles(done) {
-  return function () {
-    var directories = [];
-    var files = [];
-    var overall = [];
-
-    for (var i = 0; i < NUM_TEST_DIRECTORIES; i++) {
-      for (var j = 0; j < NUM_TEST_FILES_PER_DIRECTORY; j++) {
-        overall.push(__dirname + '/issue13/' + i + '/' + j + '.json');
-      }
-    }
-
-    var startTime = new Date().getTime();
-
-    async.eachLimit(overall, PARALLEL_FILE_CREATION, function (file, fileDone) {
-      fs.writeFile(file, '{}', fileDone);
-    }, function directoriesComplete() {
-      //console.log('all files built in ' + (new Date().getTime() - startTime) + 'ms.');
-      done();
-    });
-  };
-}

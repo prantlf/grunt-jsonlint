@@ -2,6 +2,7 @@
 .coveralls.yml
 .editorconfig
 .gitignore
+.jshintrc
 .npmignore
 .nycrc.yml
 .travis.yml

@@ -1,20 +1,12 @@
-/*
- * grunt-jsonlint
- * https://github.com/brandonsramirez/grunt-jsonlint
- *
- * Copyright (c) 2013 Brandon Ramirez
- * Licensed under the MIT license.
- */
+'use strict';
 
 module.exports = function (grunt) {
-  "use strict";
-
   var jsonlint = require('@prantlf/jsonlint');
   var validator = require('@prantlf/jsonlint/lib/validator');
   var sorter = require('@prantlf/jsonlint/lib/sorter');
   var gruntJsonLintTask = require('../lib/grunt-jsonlint-task');
 
-  grunt.registerMultiTask("jsonlint", "Validate JSON files.",
+  grunt.registerMultiTask('jsonlint', 'Validate JSON files.',
     gruntJsonLintTask(grunt, jsonlint, validator, sorter));
 };
 
