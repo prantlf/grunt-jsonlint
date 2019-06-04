@@ -42,7 +42,7 @@ describe('grunt-jsonlint task', function () {
 
   it('fails an invalid JSON file', function () {
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
-    expectFailure(grunt, 10);
+    expectFailure(grunt, 10, 9);
   });
 
   it('passes a valid CJSON file', function () {
@@ -56,14 +56,14 @@ describe('grunt-jsonlint task', function () {
     var jsonlint = createFailingJsonlintSpy();
 
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
-    expectFailure(grunt, 3);
+    expectFailure(grunt, 3, 8);
   });
 
   it('reports the file name and line number for each file that failed validation', function () {
     var jsonlint = createFailingJsonlintSpy();
 
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ]);
-    expectFailure(grunt, 3);
+    expectFailure(grunt, 3, 8);
   });
 
   it('fails the build when a JSON file fails to validate', function () {
@@ -82,17 +82,16 @@ describe('grunt-jsonlint task', function () {
     expectSuccess(grunt);
   });
 
-  it('reports the raw jsonlint exception during failure', function () {
+  it('reports the raw jsonlint exception message during failure', function () {
     var jsonlint = createFailingJsonlintSpy();
 
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ], {
       reporter: 'exception'
     });
 
-    var e = grunt.log.writeln.args[0][0];
-
-    expect(e).to.be.an(Error);
-    expect(e.message).to.contain('Parse error');
+    var message = grunt.log.writeln.args[0][0];
+    expect(message).not.to.contain('Parse error');
+    expect(message).to.contain('and instead saw');
   });
 
   it('includes jshint-style details of failure', function () {
@@ -117,7 +116,7 @@ describe('grunt-jsonlint task', function () {
     runWithFiles(grunt, jsonlint, [ 'test/invalid.json' ], {
       formatter: 'msbuild'
     });
-    expect(grunt.log.error).was.calledWith('test/invalid.json(3): error: failed JSON validation');
+    expect(grunt.log.error).was.calledWith('test/invalid.json(3,8): error: failed JSON validation');
   });
 
   // formatting of the JSON files.
@@ -213,9 +212,11 @@ function expectSuccess(gruntSpy) {
   expect(gruntSpy.log.ok).was.calledWith('1 file lint free.');
 }
 
-function expectFailure(grunt, atLine) {
+function expectFailure(grunt, atLine, atColumn) {
   expect(grunt.log.error).was.calledOnce();
-  expect(grunt.log.error).was.calledWith('File "test/invalid.json" failed JSON validation at line ' + atLine + '.');
+  expect(grunt.log.error).was.calledWith(
+    'File "test/invalid.json" failed JSON validation at line ' +
+    atLine + ', column ' + atColumn + '.');
 }
 
 function testReformattingFile(indent) {
