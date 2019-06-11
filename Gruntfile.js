@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 
   var tests = [
     'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments',
-    'jsonlint:singleQuotes', 'jsonlint:json5', 'jsonlint:schema'
+    'jsonlint:singleQuotes', 'jsonlint:json5'
   ];
   if (!oldNode) {
     tests.push('mochaTest');
