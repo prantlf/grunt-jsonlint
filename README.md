@@ -14,6 +14,7 @@ This is a fork of the original package with the following enhancements:
 * Optionally ignores trailing commas and reports duplicate object keys as an error.
 * Can sort object keys alphabetically.
 * Prefers using the 8x faster native JSON parser, if possible.
+* Formats column number of error occurrences too, does not report error location twice.
 * Depends on up-to-date npm modules with no installation warnings.
 
 Requires grunt 1.0+ and node 4.0+.
