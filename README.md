@@ -17,7 +17,7 @@ This is a fork of the original package with the following enhancements:
 * Formats column number of error occurrences too, does not report error location twice.
 * Depends on up-to-date npm modules with no installation warnings.
 
-Requires grunt 1.0+ and node 4.0+.
+Requires grunt 1.0+ and node 6.0+.
 
 ## Installation
 
@@ -42,6 +42,7 @@ Add the following to load the task into your Gruntfile:
 
 An error will be thrown if the JSON file contains syntax errors.  To prefer an error format compatible with Visual Studio, change the formatter to 'msbuild'.
 
+<<<<<<< HEAD
 ## Customizing
 
 There is a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
@@ -64,8 +65,70 @@ There is a couple of options, which can support non-standard JSON syntax, usuall
 * `ignoreTrailingCommas`, when `true` trailing commas in objects and arrays will be ignored
 * `allowSingleQuotedStrings`, when `true` single quotes will be accepted as alternative delimiters for strings
 * `allowDuplicateObjectKeys`, when `false` duplicate keys in objects will be reported as an error
+||||||| merged common ancestors
+Here's a simple [tutorial](http://grunt-tasks.com/grunt-jsonlint/ "grunt") on how to use grunt-jsonlint
 
+<<<<<<<<< Temporary merge branch 1
+# Customizing
+
+There is a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
+
+    jsonlint: {
+      all: {
+        src: [ 'some/settings.json' ],
+        options: {
+          ignoreComments: true
+        }
+      }
+    }
+
+* ignoreComments, when true JavaScript-style single-line and multiple-line comments will be recognised and ignored during parsing
+
+||||||||| merged common ancestors
+=========
+# Customizing
+
+There is a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
+
+    jsonlint: {
+      all: {
+        src: [ 'some/settings.json' ],
+        options: {
+          allowSingleQuotedStrings: true
+        }
+      }
+    }
+
+* allowSingleQuotedStrings, when true single quotes will be accepted as alternative delimiters for strings
+=======
+Here's a simple [tutorial](http://grunt-tasks.com/grunt-jsonlint/ "grunt") on how to use grunt-jsonlint
+
+# Customizing
+
+There are a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
+
+    jsonlint: {
+      all: {
+        src: [ 'some/settings.json' ],
+        options: {
+          allowSingleQuotedStrings: true,
+          ignoreComments: true
+        }
+      }
+    }
+
+* allowSingleQuotedStrings, when true single quotes will be accepted as alternative delimiters for strings
+* ignoreComments, when true JavaScript-style single-line and multiple-line comments will be recognised and ignored during parsing
+>>>>>>> schema-validator
+
+<<<<<<< HEAD
 ## Formatting
+||||||| merged common ancestors
+>>>>>>>>> Temporary merge branch 2
+# Formatting
+=======
+# Formatting
+>>>>>>> schema-validator
 
 Add the following (multi-)task to your Gruntfile:
 
@@ -80,9 +143,18 @@ Add the following (multi-)task to your Gruntfile:
       }
     }
 
+<<<<<<< HEAD
 * `format`, when `true` `JSON.stringify` will be used to format the JavaScript (if it is valid)
 * `indent`, the value passed to `JSON.stringify`, it can be the number of spaces, or string like "\t"
 * `sortKeys`, when `true` keys of objects in the output JSON will be sorted alphabetically (`format` has to be set to `true` too)
+||||||| merged common ancestors
+* format, when true JSON.stringify will be used to format the JavaScript (if it is valid)
+* indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
+=======
+* format, when true JSON.stringify will be used to format the JavaScript (if it is valid)
+* indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
+* sortKeys, when true, keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
+>>>>>>> schema-validator
 
 ## Schema Validation
 
@@ -160,7 +232,24 @@ The output will look like:
 
 The default reporter is called `exception` since it simply relays the raw exception.
 
+<<<<<<< HEAD
 ## Running Tests
+||||||| merged common ancestors
+# Roadmap
+
+The underlying jsonlint library has many features not yet exposed.
+Each of these would be valuable in grunt.
+
+* Schema validation
+* Sort file by key
+=======
+# Roadmap
+
+The underlying jsonlint library has many features not yet exposed.
+Each of these would be valuable in grunt.
+
+* Schema validation
+>>>>>>> schema-validator
 
 Unit tests are provided for automated regression testing. The easiest way
 to run them is with:

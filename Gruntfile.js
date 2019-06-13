@@ -1,37 +1,19 @@
-var oldNode = process.version.startsWith('v4.');
+const oldNode = process.version.startsWith('v4.');
 
-module.exports = function(grunt) {
+module.exports = (grunt) => {
   // Project configuration.
-  var config = {
+  const config = {
     pkg: grunt.file.readJSON('package.json'),
 
-    jshint: {
+    eslint: {
       gruntfile: {
         src: [ 'Gruntfile.js' ]
       },
-      packageJson: {
-        src: [ 'package.json' ]
-      },
       tasks: {
-        src: [ 'tasks/*.js', 'lib/*.js' ],
-        options: {
-          eqnull: true,
-          curly: true,
-          newcap: true,
-          unused: true,
-          indent: 2,
-          noempty: true,
-
-          node: true
-        }
+        src: [ 'tasks/*.js', 'lib/*.js' ]
       },
       tests: {
-        src: [ 'test/*.js' ],
-        options: {
-          eqnull: true,
-          indent: 2,
-          node: true
-        }
+        src: [ 'test/*.js' ]
       }
     },
 
@@ -58,18 +40,18 @@ module.exports = function(grunt) {
           allowSingleQuotedStrings: true
         }
       },
-      json5: {
-        src: [ 'test/json5.json' ],
-        options: {
-          mode: 'json5'
-        }
-      },
       schema: {
         src: [ 'test/3.json' ],
         options: {
           schema: {
             src: 'test/3.schema.json'
           }
+        }
+      },
+      json5: {
+        src: [ 'test/json5.json' ],
+        options: {
+          mode: 'json5'
         }
       },
       overflowTest: {
@@ -109,15 +91,15 @@ module.exports = function(grunt) {
 
   grunt.initConfig(config);
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-eslint');
   if (!oldNode) {
     grunt.loadNpmTasks('grunt-mocha-test');
   }
 
-  require('./tasks/jsonlint')(grunt);
+  require('./tasks/jsonlint')(grunt); // eslint-disable-line global-require
 
-  var tests = [
-    'jshint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments',
+  const tests = [
+    'eslint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments',
     'jsonlint:singleQuotes', 'jsonlint:json5'
   ];
   if (!oldNode) {
