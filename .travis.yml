@@ -10,12 +10,6 @@ node_js:
   - "10"
   - "8"
   - "6"
-script:
-  - if [ `node --version | cut -c 2` -ne 4 ]; then
-      npm test;
-    else
-      npm run test:old;
-    fi
 after_success:
   - test `node --version | cut -c 2,3` -eq 10 && npm run coverage
   - npx semantic-release
