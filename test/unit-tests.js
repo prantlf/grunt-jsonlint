@@ -62,7 +62,7 @@ describe('grunt-jsonlint task', () => {
     runWithFiles(grunt, jsonlint, [ 'test/valid.json' ], {
       schema: { src: 'test/3.schema.json' }
     });
-    expectFailure(grunt, 'test/valid.json');
+    expectFailure(grunt, 'test/valid.json', 1, 1);
   });
 
   // reporting behaviors

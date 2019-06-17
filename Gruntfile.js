@@ -46,6 +46,12 @@ module.exports = (grunt) => {
           }
         }
       },
+      trailingCommas: {
+        src: [ 'test/trailing-commas.json' ],
+        options: {
+          ignoreTrailingCommas: true
+        }
+      },
       json5: {
         src: [ 'test/json5.json' ],
         options: {
@@ -92,7 +98,7 @@ module.exports = (grunt) => {
 
   grunt.registerTask('test', [
     'eslint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments',
-    'jsonlint:singleQuotes', 'jsonlint:json5', 'mochaTest'
+    'jsonlint:singleQuotes', 'jsonlint:trailingCommas', 'jsonlint:json5', 'mochaTest'
   ]);
 
   // Default task(s).
