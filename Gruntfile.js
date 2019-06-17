@@ -1,8 +1,6 @@
-const oldNode = process.version.startsWith('v4.');
-
 module.exports = (grunt) => {
   // Project configuration.
-  const config = {
+  grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
     eslint: {
@@ -72,11 +70,9 @@ module.exports = (grunt) => {
           reporter: 'jshint'
         }
       }
-    }
-  };
+    },
 
-  if (!oldNode) {
-    config.mochaTest = {
+    mochaTest: {
       options: {
         reporter: 'spec'
       },
@@ -86,26 +82,18 @@ module.exports = (grunt) => {
       issue13Tests: {
         src: [ 'test/issue13-tests.js' ]
       }
-    };
-  }
-
-  grunt.initConfig(config);
+    }
+  });
 
   grunt.loadNpmTasks('grunt-eslint');
-  if (!oldNode) {
-    grunt.loadNpmTasks('grunt-mocha-test');
-  }
+  grunt.loadNpmTasks('grunt-mocha-test');
 
   require('./tasks/jsonlint')(grunt); // eslint-disable-line global-require
 
-  const tests = [
+  grunt.registerTask('test', [
     'eslint', 'jsonlint:sample', 'jsonlint:packageJson', 'jsonlint:comments',
-    'jsonlint:singleQuotes', 'jsonlint:json5'
-  ];
-  if (!oldNode) {
-    tests.push('mochaTest');
-  }
-  grunt.registerTask('test', tests);
+    'jsonlint:singleQuotes', 'jsonlint:json5', 'mochaTest'
+  ]);
 
   // Default task(s).
   grunt.registerTask('default', [ 'test' ]);
