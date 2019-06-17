@@ -5,7 +5,7 @@
 [![Dependency Status](https://david-dm.org/prantlf/grunt-jsonlint.svg)](https://david-dm.org/prantlf/grunt-jsonlint)
 [![devDependency Status](https://david-dm.org/prantlf/grunt-jsonlint/dev-status.svg)](https://david-dm.org/prantlf/grunt-jsonlint#info=devDependencies)
 
-Validates [JSON]/[JSON5] files from [`grunt`] using [`jsonlint`].
+Validates [JSON]/[JSON5] files from [`Grunt`] using [`JSONLint`].
 
 This is a fork of the original package with the following enhancements:
 
@@ -18,7 +18,7 @@ This is a fork of the original package with the following enhancements:
 * Prints the same rich error information for schema validation.
 * Depends on up-to-date npm modules with no installation warnings.
 
-Requires grunt 1.0+ and node 6.0+.
+Requires Grunt 1.0+ and node 6.0+.
 
 ## Installation
 
@@ -43,7 +43,6 @@ Add the following to load the task into your Gruntfile:
 
 An error will be thrown if the JSON file contains syntax errors.  To prefer an error format compatible with Visual Studio, change the formatter to 'msbuild'.
 
-<<<<<<< HEAD
 ## Customizing
 
 There is a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
@@ -52,86 +51,30 @@ There is a couple of options, which can support non-standard JSON syntax, usuall
       all: {
         src: [ 'some/settings.json' ],
         options: {
-          mode: 'json',
           ignoreComments: false,
           ignoreTrailingCommas: false,
           allowSingleQuotedStrings: false,
           allowDuplicateObjectKeys: true,
+          mode: 'json'
         }
       }
     }
 
-* `mode`, when set to "cjson" or "json5", enables some other flags automatically
 * `ignoreComments`, when `true` JavaScript-style single-line and multiple-line comments will be recognised and ignored
 * `ignoreTrailingCommas`, when `true` trailing commas in objects and arrays will be ignored
 * `allowSingleQuotedStrings`, when `true` single quotes will be accepted as alternative delimiters for strings
 * `allowDuplicateObjectKeys`, when `false` duplicate keys in objects will be reported as an error
-||||||| merged common ancestors
-Here's a simple [tutorial](http://grunt-tasks.com/grunt-jsonlint/ "grunt") on how to use grunt-jsonlint
+* `mode`, when set to "cjson" or "json5", enables some other flags automatically
 
-<<<<<<<<< Temporary merge branch 1
-# Customizing
+| Mode    | Enabled Options   |
+| ------- | ----------------- |
+| "json"  | (none)            |
+| "cjson" | `ignoreComments`  |
+| "json5" | `ignoreComments`, `ignoreTrailingCommas`, `allowSingleQuotedStrings` and other JSON5 specifics |
 
-There is a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
-
-    jsonlint: {
-      all: {
-        src: [ 'some/settings.json' ],
-        options: {
-          ignoreComments: true
-        }
-      }
-    }
-
-* ignoreComments, when true JavaScript-style single-line and multiple-line comments will be recognised and ignored during parsing
-
-||||||||| merged common ancestors
-=========
-# Customizing
-
-There is a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
-
-    jsonlint: {
-      all: {
-        src: [ 'some/settings.json' ],
-        options: {
-          allowSingleQuotedStrings: true
-        }
-      }
-    }
-
-* allowSingleQuotedStrings, when true single quotes will be accepted as alternative delimiters for strings
-=======
-Here's a simple [tutorial](http://grunt-tasks.com/grunt-jsonlint/ "grunt") on how to use grunt-jsonlint
-
-# Customizing
-
-There are a couple of options, which can support non-standard JSON syntax, usually used in configuration files for convenience:
-
-    jsonlint: {
-      all: {
-        src: [ 'some/settings.json' ],
-        options: {
-          allowSingleQuotedStrings: true,
-          ignoreComments: true
-        }
-      }
-    }
-
-* allowSingleQuotedStrings, when true single quotes will be accepted as alternative delimiters for strings
-* ignoreComments, when true JavaScript-style single-line and multiple-line comments will be recognised and ignored during parsing
->>>>>>> schema-validator
-
-<<<<<<< HEAD
 ## Formatting
-||||||| merged common ancestors
->>>>>>>>> Temporary merge branch 2
-# Formatting
-=======
-# Formatting
->>>>>>> schema-validator
 
-Add the following (multi-)task to your Gruntfile:
+Add the following (multi-)task to your `Gruntfile`:
 
     jsonlint: {
       all: {
@@ -144,22 +87,14 @@ Add the following (multi-)task to your Gruntfile:
       }
     }
 
-<<<<<<< HEAD
+
 * `format`, when `true` `JSON.stringify` will be used to format the JavaScript (if it is valid)
 * `indent`, the value passed to `JSON.stringify`, it can be the number of spaces, or string like "\t"
 * `sortKeys`, when `true` keys of objects in the output JSON will be sorted alphabetically (`format` has to be set to `true` too)
-||||||| merged common ancestors
-* format, when true JSON.stringify will be used to format the JavaScript (if it is valid)
-* indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
-=======
-* format, when true JSON.stringify will be used to format the JavaScript (if it is valid)
-* indent, the value passed to JSON.stringify, it can be the number of spaces, or string like "\t"
-* sortKeys, when true, keys of objects in the output JSON will be sorted alphabetically (format has to be set to true too)
->>>>>>> schema-validator
 
 ## Schema Validation
 
-You can validate JSON files using JSON Schema drafts 04, 06 or 07:
+You can validate JSON files using [JSON Schema] drafts 04, 06 or 07:
 
     jsonlint: {
       all: {
@@ -185,7 +120,7 @@ There are a few options available for reporting errors:
 
 The standard error message format (`prose`) is optimized for human reading and looks like:
 
-    >> File "test/invalid.json" failed JSON validation at line 9.
+    >> File "test/invalid.json" failed JSON validation at line 10, column 9.
 
 This is customizable to conform to the Visual Studio style by specifying the `formatter` option as `msbuild`, like:
 
@@ -202,16 +137,15 @@ This is customizable to conform to the Visual Studio style by specifying the `fo
 
 The output will look like:
 
-    >> test/invalid.json(9): error: failed JSON validation
+    >> test/invalid.json(10,9): error: failed JSON validation
 
 ### Error Reporting
 
 By default, the raw error from the underlying `jsonlint` library comes through to the grunt output.  It looks like:
 
-    Error: Parse error on line 9:
-    ...        "2"        "3",      ],      
+    ...        "2"        "3",      ],      ...
     ----------------------^
-    Expecting 'EOF', '}', ':', ',', ']', got 'STRING'
+    Unexpected string
 
 To customize this, change the `reporter` option to `jshint` (the format is inspired by how `jshint` formats their output, hence the name):
 
@@ -228,29 +162,13 @@ To customize this, change the `reporter` option to `jshint` (the format is inspi
 
 The output will look like:
 
-     9 |  "3"
-          ^ Expected 'EOF', '}', ':', ',', ']' and instead saw '3'
+    10 | ..."        "3",    ...
+                     ^ Unexpected string
 
-The default reporter is called `exception` since it simply relays the raw exception.
+The default reporter is called `exception` since it simply relays the raw exception message.
 
-<<<<<<< HEAD
+
 ## Running Tests
-||||||| merged common ancestors
-# Roadmap
-
-The underlying jsonlint library has many features not yet exposed.
-Each of these would be valuable in grunt.
-
-* Schema validation
-* Sort file by key
-=======
-# Roadmap
-
-The underlying jsonlint library has many features not yet exposed.
-Each of these would be valuable in grunt.
-
-* Schema validation
->>>>>>> schema-validator
 
 Unit tests are provided for automated regression testing. The easiest way
 to run them is with:
@@ -280,8 +198,8 @@ Copyright (C) 2013-2019 Brandon Ramirez, Ferdinand Prantl
 
 Licensed under the MIT license.
 
-[`grunt`]: https://gruntjs.com/
-[`jsonlint`]: https://prantlf.github.io/jsonlint/
+[`Grunt`]: https://gruntjs.com/
+[`JSONLint`]: https://prantlf.github.io/jsonlint/
 [JSON]: https://tools.ietf.org/html/rfc8259
 [JSON5]: https://spec.json5.org
 [JSON Schema]: https://json-schema.org
