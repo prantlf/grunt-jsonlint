@@ -41,17 +41,17 @@
     "jsonlint"
   ],
   "dependencies": {
-    "@prantlf/jsonlint": "8.0.0"
+    "@prantlf/jsonlint": "8.0.2"
   },
   "devDependencies": {
-    "async": "3.0.1",
-    "eslint": "5.16.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.17.3",
+    "async": "3.1.0",
+    "eslint": "6.0.1",
+    "eslint-config-airbnb-base": "13.2.0",
+    "eslint-plugin-import": "2.18.0",
     "expect.js": "0.3.1",
     "fs-writefile-promise": "3.0.2",
     "grunt": "1.0.4",
-    "grunt-eslint": "21.1.0",
+    "grunt-eslint": "22.0.0",
     "grunt-mocha-test": "0.13.3",
     "jshint": "2.10.2",
     "lodash": "4.17.11",

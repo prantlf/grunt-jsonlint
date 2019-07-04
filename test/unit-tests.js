@@ -1,5 +1,3 @@
-/* globals describe, before, after, afterEach, it */
-
 const grunt = require('grunt');
 const jsonlint = require('@prantlf/jsonlint');
 const validator = require('@prantlf/jsonlint/lib/validator');

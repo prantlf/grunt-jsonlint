@@ -1,5 +1,3 @@
-/* globals describe, before, it */
-
 const fs = require('fs');
 const grunt = require('grunt');
 
