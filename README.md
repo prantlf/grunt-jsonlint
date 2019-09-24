@@ -167,7 +167,6 @@ The output will look like:
 
 The default reporter is called `exception` since it simply relays the raw exception message.
 
-
 ## Running Tests
 
 Unit tests are provided for automated regression testing. The easiest way

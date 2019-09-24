@@ -12,3 +12,4 @@ node_modules/
 npm-debug.log
 test/
 Gruntfile.js
+test/issue13/
