@@ -32,8 +32,7 @@
   },
   "scripts": {
     "lint": "eslint --fix tasks/ lib/ test/*.js",
-    "test": "npm run lint && nyc grunt test",
-    "coverage": "cat coverage/lcov.info | npx coveralls"
+    "test": "npm run lint && nyc grunt test"
   },
   "keywords": [
     "gruntplugin",

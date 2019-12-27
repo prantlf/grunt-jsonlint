@@ -1,7 +1,7 @@
 # @prantlf/grunt-jsonlint
 [![NPM version](https://badge.fury.io/js/%40prantlf%2Fgrunt-jsonlint.svg)](https://badge.fury.io/js/%40prantlf%2Fgrunt-jsonlint)
 [![Build Status](https://travis-ci.com/prantlf/grunt-jsonlint.svg?branch=master)](https://travis-ci.com/prantlf/grunt-jsonlint)
-[![Coverage Status](https://coveralls.io/repos/github/prantlf/grunt-jsonlint/badge.svg?branch=master)](https://coveralls.io/github/prantlf/grunt-jsonlint?branch=master)
+[![codecov](https://codecov.io/gh/prantlf/grunt-jsonlint/branch/master/graph/badge.svg)](https://codecov.io/gh/prantlf/grunt-jsonlint)
 [![Dependency Status](https://david-dm.org/prantlf/grunt-jsonlint.svg)](https://david-dm.org/prantlf/grunt-jsonlint)
 [![devDependency Status](https://david-dm.org/prantlf/grunt-jsonlint/dev-status.svg)](https://david-dm.org/prantlf/grunt-jsonlint#info=devDependencies)
 
@@ -180,23 +180,13 @@ Alternatively, if you have `grunt-cli` installed, you could use grunt directly:
 
 Which does the same thing.
 
-## Release History
-
-* 2013-02-20   v1.0.0	First official release
-* 2015-10-29   v1.0.6	CJSON support thanks to @fredghosn, unit tests
-* 2016-05-27   v1.0.8	Option to format JSON file thanks to @robblue2x
-* 2016-06-11   v1.1.0	Enhanced error reporting for better human reading and Visual Studio integration.
-* 2019-05-27   v1.2.0	Support comments, single-quoted strings and JSON Schema validation
-* 2019-05-30   v1.3.0	Support object keys sorting in the formatted output
-* 2019-05-30   v1.3.1	Prefer faster native JSON parser, fix error reporting
-* 2019-06-02   v2.0.0	Upgrade to @prantlf/jsonlint using a hand-built parser instead of the Jison-generated one with additional options
-
 ## License
 
 Copyright (C) 2013-2019 Brandon Ramirez, Ferdinand Prantl
 
-Licensed under the MIT license.
+Licensed under the [MIT License].
 
+[MIT License]: http://en.wikipedia.org/wiki/MIT_License
 [`Grunt`]: https://gruntjs.com/
 [`JSONLint`]: https://prantlf.github.io/jsonlint/
 [JSON]: https://tools.ietf.org/html/rfc8259
