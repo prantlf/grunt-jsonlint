@@ -23,8 +23,12 @@
     "url": "http://github.com/prantlf/grunt-jsonlint/issues"
   },
   "main": "tasks/jsonlint.js",
+  "files": [
+    "lib",
+    "tasks"
+  ],
   "engines": {
-    "node": ">=6.0"
+    "node": ">=6"
   },
   "scripts": {
     "lint": "eslint --fix tasks/ lib/ test/*.js",
