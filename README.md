@@ -81,13 +81,6 @@ Add the following (multi-)task to your `Gruntfile`:
       all: {
         src: [ 'some/valid.json' ],
         options: {
-          // parsing
-          mode: 'json',
-          ignoreComments: false,
-          ignoreTrailingCommas: false,
-          allowSingleQuotedStrings: false,
-          allowDuplicateObjectKeys: true,
-          // formatting
           format: true,
           prettyPrint: false,
           indent: 2,
@@ -98,12 +91,7 @@ Add the following (multi-)task to your `Gruntfile`:
       }
     }
 
-
-* `mode`, when set to "cjson" or "json5", enables some other flags automatically
-* `ignoreComments`, when `true` JavaScript-style single-line and multiple-line comments will be recognised and ignored
-* `ignoreTrailingCommas`, when `true` trailing commas in objects and arrays will be ignored
-* `allowSingleQuotedStrings`, when `true` single quotes will be accepted as alternative delimiters for strings
-* `allowDuplicateObjectKeys`, when `false` duplicate keys in objects will be reported as an error
+Add [parsing options](#customizing) to these formatting options as you need.
 
 * `format`, when `true` `JSON.stringify` will be used to format the JavaScript (if it is valid)
 * `prettyPrint`, when `true` `JSON.stringify` will be used to format the JavaScript (if it is valid)
