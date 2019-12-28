@@ -1,3 +1,9 @@
+# [2.2.0](https://github.com/prantlf/grunt-jsonlint/compare/v2.1.0...v2.2.0) (2019-12-28)
+
+### Features
+
+* Add support for quiote unification and trailing comma trimming (JSON5) ([582b74f](https://github.com/prantlf/grunt-jsonlint/commit/582b74fc817f64b9801cf1ad99b6170194f21850))
+
 # [2.1.0](https://github.com/prantlf/grunt-jsonlint/compare/v2.0.7...v2.1.0) (2019-12-27)
 
 ### Bug Fixes
